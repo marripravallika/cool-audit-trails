@@ -50,26 +50,31 @@ That gives an auditor a useful separation of concerns:
 
 ## Architecture / workflow
 
-```text
-Capture form
-    |
-    v
-CooL.record({ type, metadata, payloads })
-    |
-    v
-Self-contained cool.evidence.v1 receipt
-    |
-    +--> localStorage Evidence Vault
-    |
-    +--> verifyEvidence(receipt)
-              |
-              +--> binding
-              +--> signature
-              +--> inclusion
-              +--> attestation / enclave status
-              +--> anchor status
-```
+```mermaid
+flowchart LR
+    U[User] --> UI[CooL Audit Trails UI]
 
+    UI --> CV[Capture & Verify]
+    CV --> SDK[CooL SDK]
+
+    SDK --> R[CooL Record]
+    R --> RC[Cryptographic Receipt]
+
+    RC --> V[Independent Verifier]
+    V --> CHK[Binding / Signature / Inclusion Checks]
+
+    CHK --> EV[Evidence Vault]
+
+    EV --> LS[(Browser localStorage)]
+
+    EV --> T[Tamper Simulation]
+    T --> V
+
+    style U fill:#e8f5f2,stroke:#159a8c
+    style UI fill:#e8f5f2,stroke:#159a8c
+    style SDK fill:#dff4ee,stroke:#159a8c
+    style V fill:#dff4ee,stroke:#159a8c
+    style EV fill:#e8f5f2,stroke:#159a8c
 The app is a frontend-only functional prototype. It uses the browser-safe CooL SDK directly and does not send customer data or receipts to a backend.
 
 ## Run locally
