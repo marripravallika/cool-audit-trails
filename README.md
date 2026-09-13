@@ -95,10 +95,37 @@ The app is a Vite SPA and can be hosted as static files. The Replit preview work
 
 ## Project structure
 
-- `artifacts/cool-audit-trails/src/App.tsx` — Evidence Vault, Capture & Verify flow, receipt inspection, and tamper demo.
-- `artifacts/cool-audit-trails/src/index.css` — product theme and responsive layout.
-- `artifacts/cool-audit-trails/package.json` — browser app dependencies, including `cool-nwc`.
-- `attached_assets/cool_india_bfsi_ai_audit_trails_1789311610657.pptx` — source problem brief.
+```mermaid
+flowchart TD
+    ROOT["cool-audit-trails"]
+
+    ROOT --> APP["artifacts/cool-audit-trails"]
+    ROOT --> LIB["lib"]
+    ROOT --> DATA["src/data"]
+    ROOT --> ASSETS["attached_assets"]
+    ROOT --> SHOTS["screenshots"]
+    ROOT --> SCRIPTS["scripts"]
+
+    APP --> SRC["src"]
+    APP --> PKG["package.json"]
+    APP --> VITE["vite.config.ts"]
+    APP --> TSC["tsconfig.json"]
+
+    SRC --> APP_TSX["App.tsx"]
+    SRC --> MAIN["main.tsx"]
+    SRC --> COMPONENTS["components"]
+    SRC --> HOOKS["hooks"]
+    SRC --> LIBSRC["lib"]
+
+    COMPONENTS --> UI["ui/"]
+    COMPONENTS --> FEATURES["Evidence Vault & Capture/Verify"]
+
+    LIBSRC --> COOL["CooL SDK integration"]
+    LIBSRC --> VERIFY["Evidence verification"]
+
+    LIB --> CLIENT["api-client-react"]
+
+```
 
 ## Technical decisions
 
