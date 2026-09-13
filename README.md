@@ -3,6 +3,7 @@
 > A verifiable evidence workspace for AI and trading changes in regulated financial systems.
 > 
 🌐 Live Demo: https://cool-audit-trails.vercel.app
+
 CooL Audit Trails is a functional browser demo for the problem described in the India BFSI AI audit-trail brief: banks, brokers, NBFCs, and payment teams need to prove what changed, who approved it, and whether the historical record was altered.
 
 The demo keeps the core experience small and testable:
