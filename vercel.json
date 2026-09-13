@@ -1,0 +1,7 @@
+{
+  "buildCommand": "pnpm --filter @workspace/cool-audit-trails run build",
+  "outputDirectory": "artifacts/cool-audit-trails/dist/public",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "framework": "vite",
+  "cleanUrls": true
+}

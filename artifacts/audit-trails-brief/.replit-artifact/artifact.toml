@@ -1,0 +1,28 @@
+kind = "slides"
+previewPath = "/audit-trails-brief/"
+title = "BFSI AI Audit Trails Brief"
+description = "Imported source presentation for the AI audit-trail product brief and problem context."
+version = "1.0.0"
+id = "artifacts/audit-trails-brief"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/audit-trails-brief/" ]
+localPort = 22600
+
+[services.development]
+run = "pnpm --filter @workspace/audit-trails-brief run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/audit-trails-brief", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/audit-trails-brief/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22600"
+BASE_PATH = "/audit-trails-brief/"

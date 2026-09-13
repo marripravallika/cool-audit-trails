@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "CooL Audit Trails"
+description = "A verifiable audit workspace for BFSI teams to capture AI and trading events as portable CooL evidence receipts and independently verify their integrity."
+version = "1.0.0"
+id = "artifacts/cool-audit-trails"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22848
+
+[services.development]
+run = "pnpm --filter @workspace/cool-audit-trails run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/cool-audit-trails", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/cool-audit-trails/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22848"
+BASE_PATH = "/"
